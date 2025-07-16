@@ -1,131 +1,134 @@
-/* Reset & Base Styling */
-body {
+/* Base Reset */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #f1f3f6;
+  background: #f4f6f9;
   color: #333;
 }
 
-/* Global container */
+/* Header */
+header {
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+/* Main Container Layout */
 .container {
-  padding: 1rem;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  height: calc(100vh - 70px); /* subtract header height */
+  width: 100%;
+  overflow: hidden;
 }
 
-/* Desktop/Tablet Split Layout */
-@media (min-width: 768px) {
-  .container {
-    flex-direction: row;
-    height: 100vh;
-    padding: 2rem;
-    gap: 2rem;
-  }
-
-  .left {
-    flex: 0.4;
-    background: #fff;
-    padding: 2rem;
-    border-radius: 1rem;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
-    overflow-y: auto;
-  }
-
-  .right {
-    flex: 0.6;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-}
-
-/* Controls Styling */
-.controls {
+/* Sidebar */
+.sidebar {
+  flex: 0.35;
+  background: #ffffff;
+  padding: 2rem;
+  border-right: 1px solid #eee;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin-bottom: 1rem;
+  overflow-y: auto;
 }
 
-.controls label {
-  font-weight: 600;
-  margin-bottom: 0.25rem;
-}
-
-.controls input[type="text"],
-.controls input[type="range"],
-.controls select,
-.controls input[type="color"],
-.controls input[type="file"] {
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-  background: #fdfdfd;
-}
-
-.controls input[type="range"] {
+textarea#quoteText {
   width: 100%;
-}
-
-.controls input[type="color"] {
-  width: 50px;
-  height: 40px;
-  padding: 0;
-  border: none;
-}
-
-/* Buttons */
-button {
-  padding: 0.75rem 1.5rem;
+  padding: 10px;
   font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+  resize: vertical;
+  min-height: 80px;
+  background-color: #fff;
+}
+.sidebar label {
   font-weight: 600;
-  background: linear-gradient(135deg, #3498db, #5dade2);
-  color: white;
-  border: none;
-  border-radius: 0.7rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
   margin-top: 0.5rem;
 }
 
-button:hover {
-  background: linear-gradient(135deg, #2e86c1, #3498db);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+.sidebar input,
+.sidebar select {
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  border: 1px solid #ccc;
+  width: 100%;
 }
 
-/* Canvas Styling */
+.sidebar .generate-btn {
+  margin-top: 1.5rem;
+  padding: 0.8rem;
+  background: linear-gradient(to right, #00b09b, #96c93d);
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.sidebar .generate-btn:hover {
+  background: linear-gradient(to right, #009688, #7bbd2e);
+}
+
+/* Canvas Panel */
+.main-panel {
+  flex: 0.65;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
 canvas {
   max-width: 100%;
+  width: 90%;
+  height: auto;
   border-radius: 1rem;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  background: #e6e9ef;
+  background: #eee;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Download button */
 .download-btn {
   margin-top: 1rem;
+  padding: 0.8rem 1.5rem;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 600;
 }
 
-/* Mobile Layout */
-@media (max-width: 767px) {
+.download-btn:hover {
+  background: #2c80b4;
+}
+
+/* Mobile (below 768px) */
+@media (max-width: 768px) {
   .container {
     flex-direction: column;
-    padding: 1rem;
+    height: auto;
   }
 
-  .left,
-  .right {
+  .sidebar,
+  .main-panel {
+    flex: none;
     width: 100%;
-  }
-
-  .left {
-    background: none;
-    box-shadow: none;
-    padding: 0;
-    margin-bottom: 2rem;
+    padding: 1rem;
   }
 
   canvas {
