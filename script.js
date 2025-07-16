@@ -16,7 +16,7 @@ document.getElementById("bgUpload").addEventListener("change", function(event) {
 function generateImage() {
   const canvas = document.getElementById("quoteCanvas");
   const ctx = canvas.getContext("2d");
-  const quote = document.getElementById("quoteInput").value;
+  const quote = document.getElementById("quoteText").value;
   const font = document.getElementById("fontSelect").value;
 
   const image = uploadedImage ? uploadedImage : new Image();
