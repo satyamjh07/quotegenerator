@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quote Image Generator</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+<meta name="theme-color" content="#3498db" />
+</head>
+<body>
+  <div class="container">
+    <h1>Quote Image Generator</h1>
+    
+    <textarea id="quoteInput" placeholder="Write your quote here..."></textarea>
+
+    <div class="controls">
+      <label for="fontSelect">Choose Font:</label>
+      <select id="fontSelect">
+        <option value="Arial">Arial</option>
+        <option value="Georgia">Georgia</option>
+        <option value="Courier New">Courier New</option>
+        <option value="Times New Roman">Times New Roman</option>
+        <option value="Comic Sans MS">Comic Sans</option>
+      </select>
+      <label for="fontSize">Font Size:</label>
+<input type="range" id="fontSize" min="16" max="48" value="28" />
+
+<label for="fontColor">Font Color:</label>
+<input type="color" id="fontColor" value="#ffffff" />
+
+<label for="textAlign">Text Align:</label>
+<select id="textAlign">
+  <option value="center" selected>Center</option>
+  <option value="left">Left</option>
+  <option value="right">Right</option>
+</select>
+      <label for="bgUpload">Upload Background:</label>
+      <input type="file" id="bgUpload" accept="image/*">
+    </div>
+
+    <button onclick="generateImage()">Generate</button>
+
+    <canvas id="quoteCanvas" width="600" height="400"></canvas>
+
+    <button onclick="downloadImage()">Download Image</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
