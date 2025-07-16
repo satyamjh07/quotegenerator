@@ -9,43 +9,68 @@
 <meta name="theme-color" content="#3498db" />
 </head>
 <body>
+
+  <!-- Header -->
+  <header>🖋️ Ink Your Quote</header>
+
+  <!-- Main Layout Container -->
   <div class="container">
-    <h1>Quote Image Generator</h1>
-    
-    <textarea id="quoteInput" placeholder="Write your quote here..."></textarea>
 
-    <div class="controls">
-      <label for="fontSelect">Choose Font:</label>
-      <select id="fontSelect">
-        <option value="Arial">Arial</option>
-        <option value="Georgia">Georgia</option>
-        <option value="Courier New">Courier New</option>
-        <option value="Times New Roman">Times New Roman</option>
-        <option value="Comic Sans MS">Comic Sans</option>
-      </select>
-      <label for="fontSize">Font Size:</label>
-<input type="range" id="fontSize" min="16" max="48" value="28" />
+    <!-- Sidebar / Controls -->
+    <div class="sidebar">
+      
+  <!-- ✅ Quote Text Area -->
+  <div class="control-group">
+    <label for="quoteText">Write Your Quote:</label>
+    <textarea id="quoteText" rows="4" placeholder="Type your quote here..."></textarea>
+  </div>
+      
+      <div class="control-group">
+        <label for="fontSelect">Choose Font:</label>
+        <select id="fontSelect">
+          <option value="Arial">Arial</option>
+          <option value="Georgia">Georgia</option>
+          <option value="Times New Roman">Times New Roman</option>
+          <option value="Courier New">Courier New</option>
+        </select>
+      </div>
 
-<label for="fontColor">Font Color:</label>
-<input type="color" id="fontColor" value="#ffffff" />
+      <div class="control-group">
+        <label for="fontSize">Font Size:</label>
+        <input type="range" id="fontSize" min="10" max="60" value="24" />
+      </div>
 
-<label for="textAlign">Text Align:</label>
-<select id="textAlign">
-  <option value="center" selected>Center</option>
-  <option value="left">Left</option>
-  <option value="right">Right</option>
-</select>
-      <label for="bgUpload">Upload Background:</label>
-      <input type="file" id="bgUpload" accept="image/*">
+      <div class="control-group">
+        <label for="fontColor">Color:</label>
+        <input type="color" id="fontColor" />
+      </div>
+
+      <div class="control-group">
+        <label for="textAlign">Text Align:</label>
+        <select id="textAlign">
+          <option value="center">Center</option>
+          <option value="left">Left</option>
+          <option value="right">Right</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label for="bgUpload">Upload Background:</label>
+        <input type="file" id="bgUpload" accept="image/*" />
+      </div>
+
+      <button class="generate-btn" onclick="generateImage()">Generate</button>
     </div>
 
-    <button onclick="generateImage()">Generate</button>
+    <!-- Canvas & Download -->
+    <div class="main-panel">
+      <canvas id="quoteCanvas" width="600" height="400"></canvas>
+      <button class="download-btn" onclick="downloadImage()">Download Image</button>
+    </div>
 
-    <canvas id="quoteCanvas" width="600" height="400"></canvas>
-
-    <button onclick="downloadImage()">Download Image</button>
   </div>
 
   <script src="script.js"></script>
 </body>
-</html>
+  </html>
+  
