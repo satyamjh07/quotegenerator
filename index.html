@@ -3,8 +3,10 @@
   <meta charset="UTF-8" />  
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>  
   <title>Quote Image Generator</title>  
-  <link rel="stylesheet" href="style.css" />  
-  <link rel="manifest" href="manifest.json" />  
+  <link rel="stylesheet" href="main.css" />  
+  <link rel="manifest" href="manifest.json" /> 
+  <!-- Google Fonts for Quote Aesthetics -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Playfair+Display&family=Dancing+Script&family=Lora&family=Roboto+Slab&display=swap" rel="stylesheet">
 <meta name="theme-color" content="#3498db" />  
 </head>  
 <body>    <!-- Header -->    <header>🖋️ Ink Your Quote</header>    <!-- Main Layout Container -->    <div class="container">  
@@ -20,21 +22,31 @@
         <option value="story">Story (1080x1920)</option>  
         <option value="wide">Wide (1280x720)</option>  
       </select>  
-    </div>h  
+    </div>
+      
   <!-- ✅ Quote Text Area -->  
   <div class="control-group">  
     <label for="quoteText">Write Your Quote:</label>  
     <textarea id="quoteText" rows="4" placeholder="Type your quote here..."></textarea>  
   </div>  <div class="control-group">  
     <label for="fontSelect">Choose Font:</label>  
-    <select id="fontSelect">  
-      <option value="Arial">Arial</option>  
-      <option value="Georgia">Georgia</option>  
-      <option value="Times New Roman">Times New Roman</option>  
-      <option value="Courier New">Courier New</option>  
-    </select>  
+<select id="fontSelect">
+  <option value="Arial">Arial</option>
+  <option value="Georgia">Georgia</option>
+  <option value="Times New Roman">Times New Roman</option>
+  <option value="Courier New">Courier New</option>
+  <option value="Montserrat">Montserrat</option>
+  <option value="Playfair Display">Playfair Display</option>
+  <option value="Dancing Script">Dancing Script</option>
+  <option value="Lora">Lora</option>
+  <option value="Roboto Slab">Roboto Slab</option>
+</select>
   </div>  
-
+<div class="control-group">
+  <label for="watermarkText">Your Watermark (optional):</label>
+  <input type="text" id="watermarkText" placeholder="e.g., @satyam_quotes" />
+</div>
+      
   <div class="control-group">  
     <label for="fontSize">Font Size:</label>  
     <input type="range" id="fontSize" min="10" max="60" value="24" />  
@@ -52,6 +64,12 @@
       <option value="left">Left</option>  
       <option value="right">Right</option>  
     </select>  
+    <label for="verticalAlign">Vertical Align:</label>
+<select id="verticalAlign">
+  <option value="middle">Center</option>
+  <option value="top">Top</option>
+  <option value="bottom">Bottom</option>
+</select>
   </div>  
 
   <div class="control-group">  
