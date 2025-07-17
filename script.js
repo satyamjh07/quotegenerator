@@ -122,6 +122,14 @@ ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
 ctx.fillStyle = "rgba(0, 0, 0, 0.4)";  
 ctx.fillRect(0, 0, canvas.width, canvas.height);  
 
+// Watermark
+  const watermark = document.getElementById("watermarkText").value.trim();
+if (watermark) {
+  ctx.font = "16px Arial";
+  ctx.fillStyle = "rgba(255,255,255,0.7)";
+  ctx.textAlign = "right";
+  ctx.fillText(watermark, canvas.width - 20, canvas.height - 20);
+}
 // Text styling  
 ctx.fillStyle = fontColor;  
 ctx.font = `${fontSize}px "${font}"`;  
@@ -130,7 +138,19 @@ ctx.shadowColor = fontColor;
 ctx.shadowBlur = 10;  
 
 const lines = wrapText(ctx, quote, canvas.width * 0.8);  
-const startY = canvas.height / 2 - (lines.length * 35) / 2;  
+  const verticalAlign = document.getElementById("verticalAlign").value;
+  let startY;
+
+  switch (verticalAlign) {
+    case "top":
+      startY = 50;
+      break;
+    case "bottom":
+      startY = canvas.height - lines.length * 35 - 50;
+      break;
+    default:
+      startY = canvas.height / 2 - (lines.length * 35) / 2;
+  }
 
 lines.forEach((line, i) => {  
   ctx.fillText(line, canvas.width / 2, startY + i * 35);  
@@ -187,3 +207,4 @@ navigator.serviceWorker
 .catch((err) => console.error("SW registration failed:", err));
 });
 }
+  
