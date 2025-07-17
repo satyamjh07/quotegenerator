@@ -1,5 +1,5 @@
 // 1. Give the cache a versioned name
-const CACHE_NAME = "quote-cache-v4"; // <—— bump this when you change files
+const CACHE_NAME = "quote-cache-v5"; // <—— bump this when you change files
 const ASSETS = [
   "/",
   "/index.html",
