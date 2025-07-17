@@ -1,9 +1,9 @@
 // 1. Give the cache a versioned name
-const CACHE_NAME = "quote-cache-v3"; // <—— bump this when you change files
+const CACHE_NAME = "quote-cache-v2"; // <—— bump this when you change files
 const ASSETS = [
   "/",
   "/index.html",
-  "/main.css",
+  "/style.css",
   "/script.js",
   "/manifest.json",
   "/images/tutorial.jpg",
