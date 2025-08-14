@@ -1,95 +1,119 @@
-<!DOCTYPE html>  <html lang="en">  
-<head>  
-  <meta charset="UTF-8" />  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>  
-  <title>Quote Image Generator</title>  
-  <link rel="stylesheet" href="style.css" />  
-  <link rel="manifest" href="manifest.json" /> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quote Image Generator</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
   <!-- Google Fonts for Quote Aesthetics -->
-<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Playfair+Display&family=Dancing+Script&family=Lora&family=Roboto+Slab&display=swap" rel="stylesheet">
-<meta name="theme-color" content="#3498db" />  
-</head>  
-<body>    <!-- Header -->    <header>🖋️ Ink Your Quote</header>    <!-- Main Layout Container -->    <div class="container">  
-    <!-- Sidebar / Controls -->  
-    <div class="sidebar">  
-          <!-- Canvas Size Selector -->  
-    <div class="canvas-size-selector">  
-      <label for="canvasSize">Canvas Size:</label>  
-      <select id="canvasSize">  
-        <option value="original">Original (800x800)</option>  
-        <option value="square">Square (1080x1080)</option>  
-        <option value="portrait">Portrait (1080x1350)</option>  
-        <option value="story">Story (1080x1920)</option>  
-        <option value="wide">Wide (1280x720)</option>  
-      </select>  
-    </div>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Playfair+Display&family=Dancing+Script&family=Lora&family=Roboto+Slab&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#3498db" />
+</head>
+<body>
+  <!-- Header -->
+  <header>🖋️ Ink Your Quote</header>
+
+  <!-- Main Layout Container -->
+  <div class="container">
+    <!-- Sidebar / Controls -->
+    <div class="sidebar">
       
-  <!-- ✅ Quote Text Area -->  
-  <div class="control-group">  
-    <label for="quoteText">Write Your Quote:</label>  
-    <textarea id="quoteText" rows="4" placeholder="Type your quote here..."></textarea>  
-  </div>  <div class="control-group">  
-    <label for="fontSelect">Choose Font:</label>  
-<select id="fontSelect">
-  <option value="Arial">Arial</option>
-  <option value="Georgia">Georgia</option>
-  <option value="Times New Roman">Times New Roman</option>
-  <option value="Courier New">Courier New</option>
-  <option value="Montserrat">Montserrat</option>
-  <option value="Playfair Display">Playfair Display</option>
-  <option value="Dancing Script">Dancing Script</option>
-  <option value="Lora">Lora</option>
-  <option value="Roboto Slab">Roboto Slab</option>
-</select>
-  </div>  
-<div class="control-group">
-  <label for="watermarkText">Your Watermark (optional):</label>
-  <input type="text" id="watermarkText" placeholder="e.g., @satyam_quotes" />
-</div>
-      
-  <div class="control-group">  
-    <label for="fontSize">Font Size:</label>  
-    <input type="range" id="fontSize" min="10" max="60" value="24" />  
-  </div>  
+      <!-- Canvas Size Selector -->
+      <div class="canvas-size-selector">
+        <label for="canvasSize">Canvas Size:</label>
+        <select id="canvasSize">
+          <option value="original">Original (800x800)</option>
+          <option value="square">Square (1080x1080)</option>
+          <option value="portrait">Portrait (1080x1350)</option>
+          <option value="story">Story (1080x1920)</option>
+          <option value="wide">Wide (1280x720)</option>
+        </select>
+      </div>
 
-  <div class="control-group">  
-    <label for="fontColor">Color:</label>  
-    <input type="color" id="fontColor" />  
-  </div>  
+      <!-- Quote Text Area -->
+      <div class="control-group">
+        <label for="quoteText">Write Your Quote:</label>
+        <textarea id="quoteText" rows="4" placeholder="Type your quote here..."></textarea>
+      </div>
 
-  <div class="control-group">  
-    <label for="textAlign">Text Align:</label>  
-    <select id="textAlign">  
-      <option value="center">Center</option>  
-      <option value="left">Left</option>  
-      <option value="right">Right</option>  
-    </select>  
-    <label for="verticalAlign">Vertical Align:</label>
-<select id="verticalAlign">
-  <option value="middle">Center</option>
-  <option value="top">Top</option>
-  <option value="bottom">Bottom</option>
-</select>
-  </div>  
+      <!-- Font Selection -->
+      <div class="control-group">
+        <label for="fontSelect">Choose Font:</label>
+        <select id="fontSelect">
+          <option value="Arial">Arial</option>
+          <option value="Georgia">Georgia</option>
+          <option value="Times New Roman">Times New Roman</option>
+          <option value="Courier New">Courier New</option>
+          <option value="Montserrat">Montserrat</option>
+          <option value="Playfair Display">Playfair Display</option>
+          <option value="Dancing Script">Dancing Script</option>
+          <option value="Lora">Lora</option>
+          <option value="Roboto Slab">Roboto Slab</option>
+        </select>
+      </div>
 
-  <div class="control-group">  
-    <label for="bgUpload">Upload Background:</label>  
-    <input type="file" id="bgUpload" accept="image/*" />  
-  </div>  
+      <!-- Watermark -->
+      <div class="control-group">
+        <label for="watermarkText">Your Watermark (optional):</label>
+        <input type="text" id="watermarkText" placeholder="e.g., @satyam_quotes" />
+      </div>
 
-  <button class="generate-btn" onclick="generateImage()">Generate</button>  
-</div>
+      <!-- Font Size -->
+      <div class="control-group">
+        <label for="fontSize">Font Size:</label>
+        <input type="range" id="fontSize" min="10" max="60" value="24" />
+      </div>
 
-<div id="toast" class="toast"></div>  
-    <!-- Canvas & Download -->  
-  <div class="main-panel">
-    <div id="canvasContainer">
-      <canvas id="quoteCanvas" style="width: 100%; height: auto;"></canvas>
+      <!-- Font Color -->
+      <div class="control-group">
+        <label for="fontColor">Color:</label>
+        <input type="color" id="fontColor" />
+      </div>
+
+      <!-- Manual Position -->
+      <div class="control-group">
+        <label>Text Position (px):</label>
+        <div class="xy-inputs" style="display:flex; gap:8px; align-items:center;">
+          <label for="posX">X:</label>
+          <input type="number" id="posX" min="0" step="1" placeholder="(auto)">
+          <label for="posY">Y:</label>
+          <input type="number" id="posY" min="0" step="1" placeholder="(auto)">
+        </div>
+        <small>Origin (0,0) is top-left of the canvas. Leave blank to auto-align.</small>
+      </div>
+
+      <!-- Vertical Align Fallback -->
+      <div class="control-group">
+        <label for="verticalAlign">Vertical Align (fallback):</label>
+        <select id="verticalAlign">
+          <option value="middle">Center</option>
+          <option value="top">Top</option>
+          <option value="bottom">Bottom</option>
+        </select>
+      </div>
+
+      <!-- Upload Background -->
+      <div class="control-group">
+        <label for="bgUpload">Upload Background:</label>
+        <input type="file" id="bgUpload" accept="image/*" />
+      </div>
+
+      <button class="generate-btn" onclick="generateImage()">Generate</button>
     </div>
-    <button class="download-btn" onclick="downloadImage()">Download Image</button>
+
+    <div id="toast" class="toast"></div>
+
+    <!-- Canvas & Download -->
+    <div class="main-panel">
+      <div id="canvasContainer">
+        <canvas id="quoteCanvas" style="width: 100%; height: auto;"></canvas>
+      </div>
+      <button class="download-btn" onclick="downloadImage()">Download Image</button>
+    </div>
   </div>
-</div>    
-  <script src="script.js"></script>  
-</body>  
-</html>  
-    
+
+  <script src="script.js"></script>
+</body>
+</html>
+
